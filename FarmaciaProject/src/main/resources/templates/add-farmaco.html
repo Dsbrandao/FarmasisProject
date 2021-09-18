@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastrar Farmaco</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">          
+       
+    </head>
+    <body>
+	<h1>Cadastrar Farmaco</h1>
+	<div class="row g-3">
+  		<div class="col">
+	<form action="#" th:action="@{/addfarmaco}" th:object="${farmaco}" method="POST" >
+	    <label for="name">Nome</label>
+	    <input type="text" class="form-control" th:field="*{nome}" id="name" placeholder="Nome" aria-label required>
+	    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+	    <br>
+		<label for="valor">Valor</label>
+	    <input type="text" th:field="*{valor}" id="CPF" placeholder="valor" requerid>
+	    <span th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></span>
+	    <br>
+	    <label for="tipo">Tipo</label>
+	    <input type="text" class="form-control" th:field="*{tipo}" id="tipo" placeholder="tipo" aria-label requerid>
+	    <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+	    <br>
+	    <input type="submit" value="Add Farmaco">  
+	</form>
+		</div>
+	</div>
+    </body>
+</html>

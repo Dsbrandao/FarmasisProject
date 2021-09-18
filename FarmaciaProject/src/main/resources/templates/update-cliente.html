@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Atualizar Cliente</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">          
+      
+    </head>
+    <body>
+	<h1>Atualizar Cliente</h1>
+	<form action="#" th:action="@{/update/{id}(id=${cliente.id})}" th:object="${cliente}"  method="POST">
+	    <label for="name">Nome</label>
+	    <input type="text" th:field="*{nome}" id="name" placeholder="Nome" required>
+	    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+	    <br>
+		<label for="CPF">CPF</label>
+	    <input type="text" th:field="*{CPF}" id="CPF" placeholder="CPF" requerid>
+	    <span th:if="${#fields.hasErrors('CPF')}" th:errors="*{CPF}"></span>
+	    <br>
+	    <label for="contato">contato</label>
+	    <input type="text" th:field="*{Contato}" id="contato" placeholder="Contato" requerid>
+	    <span th:if="${#fields.hasErrors('contato')}" th:errors="*{contato}"></span>
+	    <input type="submit" value="Update Cliente">   
+	</form>
+    </body>
+</html>
+

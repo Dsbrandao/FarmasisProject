@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Listar Clientes</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">    
+      
+    </head>
+    <body>
+	<h1>Listando Clientes</h1>
+	<div th:switch="${clientes}">
+	    <h2 th:case="null">Nenhum cliente cadastrado ainda !</h2>
+	        <div th:case="*">
+	            <h2>Clientes</h2>
+	            <table class="table table-dark table-striped">
+	                <thead>
+	                    <tr>
+	                        <th>Nome</th>
+	                        <th>CPF</th>
+	                        <th>Contato</th>
+	                        <th>Edit</th>
+	                        <th>Delete</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                <tr th:each="cliente : ${clientes}">
+	                    <td th:text="${cliente.nome}"></td>
+	                    <td th:text="${cliente.CPF}"></td>
+	                    <td th:text="${cliente.contato}"></td>
+	                    <td><a th:href="@{/edit/{id}(id=${cliente.id})}">Edit</a></td>
+	                    <td><a th:href="@{/delete/{id}(id=${cliente.id})}">Delete</a></td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>      
+	    <p><a href="/signup">Add um novo cliente</a></p>
+	    <p><a href="/index2">Add um farmaco</a></p>
+	    <p><a href="/index3">Add um funcionario</a></p>
+	</div>
+    </body>
+</html>

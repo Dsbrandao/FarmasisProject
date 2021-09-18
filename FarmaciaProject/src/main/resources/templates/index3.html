@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Listar Funcionarios</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">          
+       
+    </head>
+    <body>
+	<h1>Listando Funcionarios</h1>
+	<div th:switch="${funcionarios}">
+	    <h2 th:case="null">Nenhum funcionario cadastrado ainda !</h2>
+	        <div th:case="*">
+	            <h2>Funcionarios</h2>
+	            <table class="table table-dark table-borderless">
+	                <thead>
+	                    <tr>
+	                        <th>Nome</th>
+	                        <th>Matricula</th>
+	                        <th>Edit</th>
+	                        <th>Delete</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                <tr th:each="funcionario : ${funcionarios}">
+	                    <td th:text="${funcionario.nome}"></td>
+	                    <td th:text="${funcionario.matricula}"></td>
+	                    <td><a th:href="@{/editar2/{id}(id=${funcionario.id})}">Editar</a></td>
+	                    <td><a th:href="@{/deletar2/{id}(id=${funcionario.id})}">Deletar</a></td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>      
+	    <p><a href="/start">Add um novo funcionario</a></p>
+	    <p><a href="/index">Início</a></p>
+	</div>
+    </body>
+</html>
